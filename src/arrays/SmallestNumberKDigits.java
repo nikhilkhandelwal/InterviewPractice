@@ -5,10 +5,10 @@ package arrays;
  */
 public class SmallestNumberKDigits {
 
-    public static int smallestNumberKDigits(String number, int k){
+    public static String smallestNumberKDigits(String number, int k){
 
-        if(number.length()==k) return Integer.parseInt(number);
-        if(number.length() <k) return -1;
+        if(number.length()==k) return number;
+        if(number.length() <k) return "NA";
         char []  num = number.toCharArray();
         StringBuilder result  =  new StringBuilder();
         int start =0;
@@ -25,7 +25,7 @@ public class SmallestNumberKDigits {
 
         }
 
-        return Integer.parseInt(result.toString());
+        return result.toString();
     }
 
     public static int findSmallestDigit(char [] nums , int start, int end){
@@ -45,6 +45,12 @@ public class SmallestNumberKDigits {
 
     public static void main( String [] args){
 
-        System.out.println(smallestNumberKDigits("12345", 1));
+
+        String input = "6519273232438651927323243865192732324386519273232438651927323243865192732324386519273232438651927323243865192732324386519273232438";
+
+        String result = smallestNumberKDigits(input, input.length() -27);
+        String expected = "1112732324386519273232438651927323243865192732324386519273232438651927323243865192732324386519273232438";
+        System.out.println(result);
+        System.out.println( result.equals(expected));
     }
 }
