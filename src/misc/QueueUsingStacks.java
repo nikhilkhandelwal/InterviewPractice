@@ -1,9 +1,8 @@
+package misc;
+
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * Created by nikhandelwal on 1/24/2016.
- */
 public class QueueUsingStacks  {
 
     Stack<Integer> forward = new Stack<>();

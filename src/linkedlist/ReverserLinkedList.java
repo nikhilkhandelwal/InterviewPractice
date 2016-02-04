@@ -1,8 +1,6 @@
 package linkedlist;
 
-/**
- * Created by nikhandelwal on 12/15/2015.
- */
+
 public class ReverserLinkedList {
 
 
@@ -28,17 +26,17 @@ public class ReverserLinkedList {
     public static SimpleLinkedList reverseLL(SimpleLinkedList head){
 
 
-        SimpleLinkedList prev = null;
-        SimpleLinkedList current = head;
-        SimpleLinkedList future = null;
+        SimpleLinkedList prev =null;
+        SimpleLinkedList curr = head;
 
-        while(current != null){
+        while(curr!=null){
 
-            future = current.next;
-            current.next = prev;
-            prev = current;
-            current = future;
+            SimpleLinkedList temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
+
 
         return prev;
 
@@ -46,15 +44,16 @@ public class ReverserLinkedList {
 
     public static SimpleLinkedList recursiveReverseLL(SimpleLinkedList head){
 
-        if( head == null || head.next == null){
+        if(head == null || head.next == null)
             return head;
-        }
 
-        SimpleLinkedList remaining  = recursiveReverseLL(head.next);
+        SimpleLinkedList node = recursiveReverseLL(head.next);
+
         head.next.next = head;
+
         head.next = null;
 
-        return remaining;
+        return node;
 
     }
 

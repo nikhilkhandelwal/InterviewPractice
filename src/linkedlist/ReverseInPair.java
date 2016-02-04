@@ -1,9 +1,7 @@
 package linkedlist;
 
-import java.util.LinkedList;
+public class ReverseInPair {
 
-
-public class SwapAlternateNodes {
 
     private static void printLL(SimpleLinkedList node) {
         while (node.next != null) {
@@ -23,15 +21,33 @@ public class SwapAlternateNodes {
         return head;
     }
 
-    public static class ListNode {
-        int val;
-        ListNode next;
+    public static SimpleLinkedList pairReverseLL(SimpleLinkedList head){
 
-        ListNode(int x) {
-            val = x;
-        }
+
+        return swapPairs(reverseLL(head));
+
+
     }
 
+
+    public static SimpleLinkedList reverseLL(SimpleLinkedList head) {
+
+
+        SimpleLinkedList prev = null;
+        SimpleLinkedList curr = head;
+
+        while (curr != null) {
+
+            SimpleLinkedList temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
+        }
+
+
+        return prev;
+
+    }
     public static SimpleLinkedList swapPairs(SimpleLinkedList head) {
 
         if ( head == null||head.next == null)
@@ -48,35 +64,13 @@ public class SwapAlternateNodes {
 
 
     }
-
-    public static ListNode swapPairNRecursive(ListNode head) {
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
-        ListNode current = dummy;
-        ListNode next;
-        ListNode future;
-
-        while (current.next != null && current.next.next != null) {
-            next = current.next;
-            future = current.next.next;
-            current.next = future;
-            next.next = future.next;
-            future.next = next;
-            current = next;
-
-        }
-        return dummy.next;
-    }
-
-    public static void main(String[] args) {
-
+    public static void main(String [] args){
 
         SimpleLinkedList head = createLL();
         printLL(head);
-        printLL(swapPairs(head));
-
-
+        printLL(pairReverseLL(head));
 
     }
-}
 
+
+}
